@@ -1,0 +1,7 @@
+<!-- MESSAGE COMPONENT -->
+<div *ngIf="messages().length > 0" [ngClass]="{'error-message' : isError(), 'success-message': !isError()}">
+    <h3>{{ title() }}</h3>
+    <div *ngFor="let message of messages()">
+        <p>{{ message }}</p>
+    </div>
+</div>

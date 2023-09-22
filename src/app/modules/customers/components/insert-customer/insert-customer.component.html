@@ -1,0 +1,29 @@
+<div class="form-container">
+    <h1>Cadastrar Cliente</h1>
+
+    <!-- INSERT CUSTOMER FORM -->
+    <form [formGroup]="form" (ngSubmit)="save()">
+        <input type="text" formControlName="name" placeholder="Nome">
+        <input type="text" formControlName="phone" placeholder="Telefone (com DDD, Apenas Números)">
+        <input type="date" formControlName="birthDate" placeholder="Data de Nascimento">
+        <input type="text" formControlName="houseNumber" placeholder="Número da Casa">
+        <input type="text" formControlName="street" placeholder="Rua">
+        <input type="text" formControlName="neighborhood" placeholder="Bairro">
+        <input type="text" formControlName="city" placeholder="Cidade">
+        <select formControlName="state">
+            <option value="" disabled selected>Selecione o Estado</option>
+            <option *ngFor="let state of states" [value]="state">
+                {{ state }}
+            </option>
+        </select>
+        <input type="text" formControlName="cep" placeholder="CEP (Apenas Números)">
+        <button type="submit" class="primary-btn" [disabled]="disableButton()">Cadastrar</button>
+    </form>
+
+    <!-- LOADING COMPONENT -->
+    <app-loading></app-loading>
+
+</div>
+
+<!-- MESSAGE COMPONENT -->
+<app-message></app-message>

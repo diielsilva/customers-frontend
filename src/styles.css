@@ -1,1 +1,75 @@
 /* You can add global styles to this file, and also import other style files */
+@import "primeicons/primeicons.css";
+
+:root {
+    --primary-color: rgb(178, 47, 211);
+    --secondary-color: white;
+    --shadow: 0px 0px 3px rgb(66, 64, 64);
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    border: none;
+}
+
+html,
+body {
+    height: 100%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:disabled {
+    background-color: gray;
+    cursor: default;
+}
+
+input,
+select {
+    border-bottom: 2px solid gray;
+    display: block;
+    margin-bottom: 5px;
+    padding: 10px;
+    outline: none;
+    width: 50vw;
+    max-width: 50vw;
+    background: none;
+}
+
+input:focus {
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.primary-btn {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    color: white;
+    margin-top: 10px;
+    width: 150px;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+details {
+    cursor: pointer;
+    padding: 15px;
+}
+
+summary {
+    padding: 10px;
+}

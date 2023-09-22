@@ -1,0 +1,22 @@
+.paginator-container {
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    align-items: center;
+}
+
+.actual-page {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: var(--primary-color);
+    color: white;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.paginator-container button {
+    padding: 10px;
+    background: none;
+    color: var(--primary-color);
+    outline: none;
+}

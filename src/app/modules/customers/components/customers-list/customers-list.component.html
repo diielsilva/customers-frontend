@@ -1,0 +1,107 @@
+<!-- CUSTOMER COMPONENT -->
+<div class="customers-container">
+    <h1>Lista de Clientes</h1>
+    <ul>
+        <!-- CUSTOMERS LIST -->
+        <li *ngFor="let customer of customers">
+
+            <!-- CUSTOMER -->
+            <details class="customer-card">
+                <summary>{{ customer.name }}</summary>
+                <div class="customer-content">
+                    <ul>
+                        <li>ID: {{ customer.id }}</li>
+                        <li>Telefone: {{ customer.phone.number | phone }}</li>
+                        <li>Nasc: {{ customer.birthDate| date: 'dd/MM/yyyy' }} </li>
+                        <li>Rua: {{ customer.address.street }}</li>
+                        <li>Casa: {{ customer.address.houseNumber }}</li>
+                        <li>Bairro: {{ customer.address.neighborhood }}</li>
+                        <li>Cidade: {{ customer.address.city }}</li>
+                        <li>Estado: {{ customer.address.state }}</li>
+                    </ul>
+                    <div class="customer-footer">
+                        <button (click)="displayPurchasesModal(customer)"><i class="pi pi-shopping-cart"></i></button>
+                        <button (click)="displayUpdateModal(customer)"><i class="pi pi-pencil"></i></button>
+                        <button (click)="delete(customer.id)"><i class="pi pi-trash"></i></button>
+                    </div>
+
+                </div>
+            </details>
+
+        </li>
+    </ul>
+
+    <!-- PAGINATOR COMPONENT -->
+    <app-paginator [totalPages]="totalPages" (emitter)="onPageChange($event)"></app-paginator>
+
+</div>
+
+<!-- UPDATE CUSTOMER -->
+<div class="modal" *ngIf="isUpdateModalVisible">
+    <div class="modal-content">
+        <div class="close-container">
+            <button class="close-modal-btn" (click)="hiddenUpdateModal()"><i class="pi pi-times"></i></button>
+        </div>
+        <h1>Editar Cliente</h1>
+
+        <!-- UPDATE CUSTOMER FORM -->
+        <form [formGroup]="updateForm" (ngSubmit)="update()">
+            <input type="text" formControlName="name" placeholder="Nome">
+            <input type="text" formControlName="phone" placeholder="Telefone (com DDD, Apenas Números)">
+            <input type="date" formControlName="birthDate" placeholder="Data de Nascimento">
+            <input type="text" formControlName="houseNumber" placeholder="Número da Casa">
+            <input type="text" formControlName="street" placeholder="Rua">
+            <input type="text" formControlName="neighborhood" placeholder="Bairro">
+            <input type="text" formControlName="city" placeholder="Cidade">
+            <select formControlName="state">
+                <option value="" disabled selected>Selecione o Estado</option>
+                <option *ngFor="let state of states" [value]="state">
+                    {{ state }}
+                </option>
+            </select>
+            <input type="text" formControlName="cep" placeholder="CEP (Apenas Números)">
+            <button type="submit" [disabled]="disableUpdateButton()" class="primary-btn">Editar</button>
+        </form>
+    </div>
+
+    <!-- LOADING COMPONENT -->
+    <app-loading></app-loading>
+
+</div>
+
+<!-- PURCHASES MODAL -->
+<dialog class="modal" [open]="isPurchasesModalVisible" *ngIf="isPurchasesModalVisible">
+    <div class="modal-content">
+        <div class="close-container">
+            <button (click)="hiddenPurchasesModal()" class="close-modal-btn"><i class="pi pi-times"></i></button>
+        </div>
+        <h2>Lista de Compras</h2>
+
+        <!-- PURCHASES LIST -->
+        <ul
+            *ngIf=" selectedCustomer.purchases == undefined || selectedCustomer.purchases.length > 0; else emptyPurchasesMessage">
+            <li *ngFor="let purchase of selectedCustomer.purchases">
+                <div class="purchase">
+                    <p>Data: {{ purchase.purchaseDate | date : 'dd/MM/yyyy' }}</p>
+                    <button class="remove-btn" (click)="deletePurchase(purchase.id)"><i
+                            class="pi pi-trash"></i></button>
+                </div>
+            </li>
+        </ul>
+
+        <!-- EMPTY PURCHASES LIST MESSAGE -->
+        <ng-template #emptyPurchasesMessage>
+            <p class="empty-cart-message">Não existem compras cadastradas</p>
+        </ng-template>
+
+        <!-- ADD PURCHASE BUTTON -->
+        <button (click)="savePurchase(selectedCustomer.id)" class="primary-btn">Adicionar</button>
+
+    </div>
+</dialog>
+
+<!-- LOADING COMPONENT -->
+<app-loading></app-loading>
+
+<!-- MESSAGE COMPONENT -->
+<app-message></app-message>

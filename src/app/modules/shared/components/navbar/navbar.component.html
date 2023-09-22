@@ -1,0 +1,20 @@
+<!-- TOOLBAR COMPONENT -->
+<header *ngIf="hasOnlineUser()" class="header">
+    <button (click)="displayOrHiddenSidebar()"><i class="pi pi-align-justify"></i> Menu</button>
+</header>
+
+
+<!-- SIDEBAR COMPONENT -->
+<div *ngIf="isVisible && hasOnlineUser()" class="sidebar">
+    <button (click)="hiddenNavbar()" class="close-btn"><i class="pi pi-times"></i></button>
+    <nav>
+        <details>
+            <summary>Clientes</summary>
+            <ul>
+                <li><a routerLink="customers/insert" (click)="hiddenNavbar()">Cadastrar</a></li>
+                <li><a routerLink="customers" (click)="hiddenNavbar()">Listar</a></li>
+            </ul>
+        </details>
+        <a routerLink="">Sair</a>
+    </nav>
+</div>

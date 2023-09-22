@@ -1,0 +1,16 @@
+<!-- LOGIN FORM -->
+<div class="form-container">
+    <h1>Realizar Autenticação</h1>
+    <form [formGroup]="form" (ngSubmit)="login()">
+        <input type="text" formControlName="username" placeholder="Usuário">
+        <input type="password" formControlName="password" placeholder="Senha">
+        <button class="primary-btn" [disabled]="disableButton()">Entrar</button>
+    </form>
+
+    <!-- LOADING COMPONENT -->
+    <app-loading></app-loading>
+
+</div>
+
+<!-- MESSAGE COMPONENT -->
+<app-message></app-message>

@@ -1,0 +1,455 @@
+.header {
+    padding: 20px;
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.header button {
+    background: none;
+    color: white;
+}
+
+.sidebar {
+    position: fixed;
+    height: 100%;
+    width: 30%;
+    max-width: 400px;
+    border-right: 0.5px solid gray;
+    background-color: var(--secondary-color);
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.close-btn {
+    align-self: flex-end;
+    margin: 20px;
+    background: none;
+}
+
+details {
+    padding: 5px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid gainsboro;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+
+@media only screen and (max-width: 650px) {
+
+    .sidebar {
+        width: 100vw;
+        min-height: 100vh;
+        top: 0;
+    }
+}
+
+@keyframes slider {
+    0% {
+        width: 0vw;
+    }
+
+    1% {
+        width: 1vw;
+    }
+
+    2% {
+        width: 2vw;
+    }
+
+    3% {
+        width: 3vw;
+    }
+
+    4% {
+        width: 4vw;
+    }
+
+    5% {
+        width: 5vw;
+    }
+
+    6% {
+        width: 6vw;
+    }
+
+    7% {
+        width: 7vw;
+    }
+
+    8% {
+        width: 8vw;
+    }
+
+    9% {
+        width: 9vw;
+    }
+
+    10% {
+        width: 10vw;
+    }
+
+    11% {
+        width: 11vw;
+    }
+
+    12% {
+        width: 12vw;
+    }
+
+    13% {
+        width: 13vw;
+    }
+
+    14% {
+        width: 14vw;
+    }
+
+    15% {
+        width: 15vw;
+    }
+
+    16% {
+        width: 16vw;
+    }
+
+    17% {
+        width: 17vw;
+    }
+
+    18% {
+        width: 18vw;
+    }
+
+    19% {
+        width: 19vw;
+    }
+
+    20% {
+        width: 20vw;
+    }
+
+    21% {
+        width: 21vw;
+    }
+
+    22% {
+        width: 22vw;
+    }
+
+    23% {
+        width: 23vw;
+    }
+
+    24% {
+        width: 24vw;
+    }
+
+    25% {
+        width: 25vw;
+    }
+
+    26% {
+        width: 26vw;
+    }
+
+    27% {
+        width: 27vw;
+    }
+
+    28% {
+        width: 28vw;
+    }
+
+    29% {
+        width: 29vw;
+    }
+
+    30% {
+        width: 30vw;
+    }
+
+    31% {
+        width: 31vw;
+    }
+
+    32% {
+        width: 32vw;
+    }
+
+    33% {
+        width: 33vw;
+    }
+
+    34% {
+        width: 34vw;
+    }
+
+    35% {
+        width: 35vw;
+    }
+
+    36% {
+        width: 36vw;
+    }
+
+    37% {
+        width: 37vw;
+    }
+
+    38% {
+        width: 38vw;
+    }
+
+    39% {
+        width: 39vw;
+    }
+
+    40% {
+        width: 40vw;
+    }
+
+    41% {
+        width: 41vw;
+    }
+
+    42% {
+        width: 42vw;
+    }
+
+    43% {
+        width: 43vw;
+    }
+
+    44% {
+        width: 44vw;
+    }
+
+    45% {
+        width: 45vw;
+    }
+
+    46% {
+        width: 46vw;
+    }
+
+    47% {
+        width: 47vw;
+    }
+
+    48% {
+        width: 48vw;
+    }
+
+    49% {
+        width: 49vw;
+    }
+
+    50% {
+        width: 50vw;
+    }
+
+    51% {
+        width: 51vw;
+    }
+
+    52% {
+        width: 52vw;
+    }
+
+    53% {
+        width: 53vw;
+    }
+
+    54% {
+        width: 54vw;
+    }
+
+    55% {
+        width: 55vw;
+    }
+
+    56% {
+        width: 56vw;
+    }
+
+    57% {
+        width: 57vw;
+    }
+
+    58% {
+        width: 58vw;
+    }
+
+    59% {
+        width: 59vw;
+    }
+
+    60% {
+        width: 60vw;
+    }
+
+    61% {
+        width: 61vw;
+    }
+
+    62% {
+        width: 62vw;
+    }
+
+    63% {
+        width: 63vw;
+    }
+
+    64% {
+        width: 64vw;
+    }
+
+    65% {
+        width: 65vw;
+    }
+
+    66% {
+        width: 66vw;
+    }
+
+    67% {
+        width: 67vw;
+    }
+
+    68% {
+        width: 68vw;
+    }
+
+    69% {
+        width: 69vw;
+    }
+
+    70% {
+        width: 70vw;
+    }
+
+    71% {
+        width: 71vw;
+    }
+
+    72% {
+        width: 72vw;
+    }
+
+    73% {
+        width: 73vw;
+    }
+
+    74% {
+        width: 74vw;
+    }
+
+    75% {
+        width: 75vw;
+    }
+
+    76% {
+        width: 76vw;
+    }
+
+    77% {
+        width: 77vw;
+    }
+
+    78% {
+        width: 78vw;
+    }
+
+    79% {
+        width: 79vw;
+    }
+
+    80% {
+        width: 80vw;
+    }
+
+    81% {
+        width: 81vw;
+    }
+
+    82% {
+        width: 82vw;
+    }
+
+    83% {
+        width: 83vw;
+    }
+
+    84% {
+        width: 84vw;
+    }
+
+    85% {
+        width: 85vw;
+    }
+
+    86% {
+        width: 86vw;
+    }
+
+    87% {
+        width: 87vw;
+    }
+
+    88% {
+        width: 88vw;
+    }
+
+    89% {
+        width: 89vw;
+    }
+
+    90% {
+        width: 90vw;
+    }
+
+    91% {
+        width: 91vw;
+    }
+
+    92% {
+        width: 92vw;
+    }
+
+    93% {
+        width: 93vw;
+    }
+
+    94% {
+        width: 94vw;
+    }
+
+    95% {
+        width: 95vw;
+    }
+
+    96% {
+        width: 96vw;
+    }
+
+    97% {
+        width: 97vw;
+    }
+
+    98% {
+        width: 98vw;
+    }
+
+    99% {
+        width: 99vw;
+    }
+
+    100% {
+        width: 100vw;
+    }
+}
