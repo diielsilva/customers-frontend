@@ -22,6 +22,10 @@ export class CustomerService {
     return this.client.get<Pageable<Customer>>(`${this._url}?page=${page}`);
   }
 
+  public findByName(page: number, name: string): Observable<Pageable<Customer>> {
+    return this.client.get<Pageable<Customer>>(`${this._url}/search?page=${page}&name=${name}`);
+  }
+
   public update(id: number, dto: InsertCustomerDTO): Observable<Customer> {
     return this.client.put<Customer>(`${this._url}/${id}`, dto);
   }

@@ -1,6 +1,12 @@
 <!-- CUSTOMER COMPONENT -->
 <div class="customers-container">
     <h1>Lista de Clientes</h1>
+    <div>
+        <form [formGroup]="searchForm" (ngSubmit)="findByName()" class="search-form">
+            <input type="text" formControlName="name" placeholder="Pesquisar Nome...">
+            <button type="submit" class="primary-btn">Pesquisar</button>
+        </form>
+    </div>
     <ul>
         <!-- CUSTOMERS LIST -->
         <li *ngFor="let customer of customers">
@@ -32,7 +38,8 @@
     </ul>
 
     <!-- PAGINATOR COMPONENT -->
-    <app-paginator [totalPages]="totalPages" (emitter)="onPageChange($event)"></app-paginator>
+    <app-paginator [actualPage]="nameToSearch == '' ? actualPage : actualSearchPage " [totalPages]="totalPages"
+        (emitter)="onPageChange($event)"></app-paginator>
 
 </div>
 

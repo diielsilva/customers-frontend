@@ -7,17 +7,18 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class PaginatorComponent {
   @Input({ required: true }) public totalPages!: number;
-  protected actualPage: number = 0;
+  @Input({ required: true }) public actualPage: number = 0;
   @Output() public emitter: EventEmitter<number> = new EventEmitter();
 
-
   public goToFirstPage(): void {
-    this.actualPage = 0;
-    this.emitter.emit(this.actualPage);
+    if (this.actualPage != 0) {
+      this.actualPage = 0;
+      this.emitter.emit(this.actualPage);
+    }
   }
 
   public goToNextPage(): void {
-    if (this.actualPage < this.totalPages - 1) {
+    if (this.actualPage < this.totalPages - 1 && this.totalPages > 0) {
       this.actualPage++;
       this.emitter.emit(this.actualPage);
     }
@@ -31,8 +32,10 @@ export class PaginatorComponent {
   }
 
   public goToLastPage(): void {
-    this.actualPage = this.totalPages - 1;
-    this.emitter.emit(this.actualPage);
+    if (this.actualPage != this.totalPages - 1 && this.totalPages > 0) {
+      this.actualPage = this.totalPages - 1;
+      this.emitter.emit(this.actualPage);
+    }
   }
 
 }

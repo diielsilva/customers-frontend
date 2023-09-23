@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -7,11 +8,10 @@ import { Customer } from 'src/app/core/models/customer';
 import { Purchase } from 'src/app/core/models/purchase';
 import { LoadingService } from 'src/app/modules/shared/services/loading.service';
 import { MessageService } from 'src/app/modules/shared/services/message.service';
-import { CustomerService } from '../../services/customer.service';
-import { PurchaseService } from '../../services/purchase.service';
-import { formatDate } from '@angular/common';
 import { InsertAddressDTO } from '../../dtos/insert-address.dto';
 import { InsertCustomerDTO } from '../../dtos/insert-customer.dto';
+import { CustomerService } from '../../services/customer.service';
+import { PurchaseService } from '../../services/purchase.service';
 
 @Component({
   selector: 'app-customers-list',
@@ -24,8 +24,11 @@ export class CustomersListComponent implements OnInit {
   protected isPurchasesModalVisible: boolean = false;
   protected isUpdateModalVisible: boolean = false;
   protected updateForm!: FormGroup;
+  protected searchForm!: FormGroup;
+  protected nameToSearch: string = '';
   protected states: string[] = CONSTANTS.states;
   protected actualPage: number = 0;
+  protected actualSearchPage: number = 0;
   protected totalPages: number = 0;
 
   constructor(private formBuilder: FormBuilder, private messager: MessageService,
@@ -33,11 +36,21 @@ export class CustomersListComponent implements OnInit {
 
   ngOnInit(): void {
     this.findAll();
+    this.searchForm = this.formBuilder.group({
+      name: ['']
+    });
   }
 
   protected onPageChange(event: number): void {
-    this.actualPage = event;
-    this.findAll();
+    if (this.nameToSearch != '') {
+      this.actualSearchPage = event;
+      this.findByName();
+    } else {
+      this.actualPage = event;
+      this.nameToSearch = '';
+      this.actualSearchPage = 0;
+      this.findAll();
+    }
   }
 
   // -- START PURCHASE MODAL METHODS
@@ -74,7 +87,7 @@ export class CustomersListComponent implements OnInit {
   protected disableUpdateButton(): boolean {
     return this.updateForm.invalid || this.loader.isLoading;
   }
-  // -- END CUSTOMER UPDATE MODAL METHODS
+  // --- END CUSTOMER UPDATE MODAL METHODS
 
   // --- CUSTOMERS REQUEST
   private findAll(): void {
@@ -92,6 +105,27 @@ export class CustomersListComponent implements OnInit {
     });
   }
 
+  protected findByName(): void {
+    this.actualPage = 0;
+    this.nameToSearch = this.searchForm.get('name')!.value;
+    if (this.nameToSearch != '') {
+      this.customerService.findByName(this.actualSearchPage, this.nameToSearch).subscribe({
+        next: (response: Pageable<Customer>) => {
+          this.totalPages = response.totalPages;
+          this.customers = response.content;
+        },
+        error: (response: HttpErrorResponse) => {
+          this.actualSearchPage = 0;
+          this.actualPage = 0;
+          this.messager.errorMessage('Erro na Pesquisa', response);
+          this.findAll();
+        }
+      });
+    } else {
+      this.findAll();
+    }
+  }
+
   protected update(): void {
     if (this.updateForm.valid) {
       const address: InsertAddressDTO = {
@@ -103,6 +137,10 @@ export class CustomersListComponent implements OnInit {
 
       this.customerService.update(this.selectedCustomer.id, customer).subscribe({
         next: () => {
+          this.nameToSearch = '';
+          this.actualPage = 0;
+          this.actualSearchPage = 0;
+          this.searchForm.reset();
           this.messager.successMessage('Sucesso na Edição', 'Cliente alterado com sucesso');
           this.hiddenUpdateModal();
           this.findAll();
@@ -117,6 +155,10 @@ export class CustomersListComponent implements OnInit {
   protected delete(id: number): void {
     this.customerService.delete(id).subscribe({
       next: () => {
+        this.nameToSearch = '';
+        this.actualPage = 0;
+        this.actualSearchPage = 0;
+        this.searchForm.reset();
         this.messager.successMessage('Removido com Sucesso', 'Cliente removido com sucesso');
         this.findAll();
       },
