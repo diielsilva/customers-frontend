@@ -133,7 +133,7 @@ export class CustomersListComponent implements OnInit {
           this.updateForm.get('city')!.value, state: this.updateForm.get('state')!.value, cep: this.updateForm.get('cep')?.value ? this.updateForm.get('cep')!.value : ''
       };
 
-      const customer: InsertCustomerDTO = { name: this.updateForm.get('name')!.value, phone: this.updateForm.get('phone')!.value, birthDate: this.updateForm.get('birthDate')!.value, address: address };
+      const customer: InsertCustomerDTO = { name: this.updateForm.get('name')!.value, phoneNumber: this.updateForm.get('phone')!.value, birthDate: this.updateForm.get('birthDate')!.value, address: address };
 
       this.customerService.update(this.selectedCustomer.id, customer).subscribe({
         next: () => {

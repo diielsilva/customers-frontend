@@ -44,7 +44,7 @@ export class InsertCustomerComponent implements OnInit {
           this.form.get('city')!.value, state: this.form.get('state')!.value, cep: this.form.get('cep')?.value ? this.form.get('cep')!.value : ''
       };
 
-      const customer: InsertCustomerDTO = { name: this.form.get('name')!.value, phone: this.form.get('phone')!.value, birthDate: this.form.get('birthDate')!.value, address: address };
+      const customer: InsertCustomerDTO = { name: this.form.get('name')!.value, phoneNumber: this.form.get('phone')!.value, birthDate: this.form.get('birthDate')!.value, address: address };
 
       this.customerService.save(customer).subscribe({
         next: () => {

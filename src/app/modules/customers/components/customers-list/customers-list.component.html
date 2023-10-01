@@ -89,7 +89,7 @@
             *ngIf=" selectedCustomer.purchases == undefined || selectedCustomer.purchases.length > 0; else emptyPurchasesMessage">
             <li *ngFor="let purchase of selectedCustomer.purchases">
                 <div class="purchase">
-                    <p>Data: {{ purchase.purchaseDate | date : 'dd/MM/yyyy' }}</p>
+                    <p>Data: {{ purchase.date | date : 'dd/MM/yyyy' }}</p>
                     <button class="remove-btn" (click)="deletePurchase(purchase.id)"><i
                             class="pi pi-trash"></i></button>
                 </div>
