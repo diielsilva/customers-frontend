@@ -1,4 +1,4 @@
-.loading  {
+.loading {
     background-color: rgb(31, 90, 218);
     box-shadow: var(--shadow);
     color: white;
@@ -12,3 +12,11 @@
     width: 400px;
 }
 
+@media only screen and (max-width: 500px) {
+    .loading {
+        margin: 0px;
+        width: 100%;
+        padding: 10px;
+        border-radius: 0px;
+    }
+}

@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['customers']);
         },
         error: (response: HttpErrorResponse) => {
-          this.messager.errorMessage('Erro na Login', response);
+          this.messager.errorMessage('Erro no Login', response);
         }
       });
     }

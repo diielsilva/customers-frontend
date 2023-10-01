@@ -73,3 +73,9 @@ details {
 summary {
     padding: 10px;
 }
+
+@media only screen and (max-width: 500px) {
+    input, select {
+        width: 100vw;
+    }
+}

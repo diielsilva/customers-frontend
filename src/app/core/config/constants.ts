@@ -1,5 +1,5 @@
 export const CONSTANTS = {
-    url: 'http://localhost:8080',
+    url: 'http://192.168.0.108:8080',
     message: 'Não foi possível conectar ao servidor!',
     states: [
         'AC',
