@@ -3,20 +3,44 @@
     box-shadow: var(--shadow);
     color: white;
     position: fixed;
-    top: 0;
-    right: 0;
+    bottom: 0;
+    left: 0;
     padding: 15px;
-    margin: 10px;
     text-align: center;
-    border-radius: 10px;
-    width: 400px;
+    width: 100%;
+    animation-name: slider;
+    animation-duration: 1s;
+    animation-delay: -0.1s;
 }
 
 @media only screen and (max-width: 500px) {
     .loading {
         margin: 0px;
         width: 100%;
-        padding: 10px;
         border-radius: 0px;
+        animation-name: slider-full;
+        animation-duration: 1s;
+        animation-delay: -0.1s;
+    }
+}
+
+
+@keyframes slider {
+    from {
+        width: 0px;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes slider-full {
+    from {
+        width: 0px;
+    }
+
+    to {
+        width: 100%;
     }
 }

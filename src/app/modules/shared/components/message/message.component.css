@@ -11,6 +11,9 @@
     border-radius: 10px;
     box-shadow: var(--shadow);
     width: 400px;
+    animation-name: slider;
+    animation-duration: 1s;
+    animation-delay: -0.1s;
 }
 
 .success-message {
@@ -18,10 +21,35 @@
 }
 
 @media only screen and (max-width: 500px) {
-    .error-message,.success-message {
+
+    .error-message,
+    .success-message {
         margin: 0px;
         width: 100%;
         padding: 10px;
         border-radius: 0px;
+        animation-name: slider-full;
+        animation-duration: 1s;
+        animation-delay: -0.1s;
+    }
+}
+
+@keyframes slider {
+    from {
+        width: 0px;
+    }
+
+    to {
+        width: 400px;
+    }
+}
+
+@keyframes slider-full {
+    from {
+        width: 0px;
+    }
+
+    to {
+        width: 100%;
     }
 }
